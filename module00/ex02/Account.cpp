@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+#include <iomanip>
 #include "Account.hpp"
 
 /*	Initializing the static/class/non-member attributes. */
@@ -25,6 +27,7 @@ Account::Account() {
 }
 
 Account::Account(int initial_deposit) {
+	_displayTimestamp();
 	this->_accountIndex = Account::_nbAccounts;
 	this->_amount = initial_deposit;
 	this->_nbDeposits = 0;
@@ -37,6 +40,7 @@ Account::Account(int initial_deposit) {
 }
 
 Account::~Account() {
+	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex
 			  << ";amount:" << this->_amount
 			  << ";closed" << std::endl;
@@ -56,6 +60,7 @@ int	Account::getNbWithdrawals() { return (Account::_totalNbWithdrawals); }
  */
 
 void	Account::displayAccountsInfos() {
+	_displayTimestamp();
 	std::cout << "accounts:" << Account::_nbAccounts
 	<< ";total:" << Account::_totalAmount
 	<< ";deposits:" << Account::_totalNbDeposits
@@ -63,6 +68,7 @@ void	Account::displayAccountsInfos() {
 }
 
 void		Account::makeDeposit(int deposit) {
+	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex
 			  << ";p_amount:" << this->_amount;
 	this->_amount += deposit;
@@ -77,6 +83,7 @@ void		Account::makeDeposit(int deposit) {
 bool		Account::makeWithdrawal(int withdrawal) {
 	int	tmp;
 
+	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex
 			  << ";p_amount:" << this->_amount;
 	tmp = this->_amount - withdrawal;
@@ -91,15 +98,17 @@ bool		Account::makeWithdrawal(int withdrawal) {
 	Account::_totalAmount -= withdrawal;
 	std::cout << ";withdrawal:" << withdrawal
 			  << ";amount:" << this->_amount
-			  << ";nb_deposits:" << this->_nbDeposits << std::endl;
+			  << ";nb_withdrawals:" << this->_nbDeposits << std::endl;
 	return (true);
 }
 
 int			Account::checkAmount() const {
+	_displayTimestamp();
 	return (this->_amount);
 }
 
 void		Account::displayStatus() const {
+	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex
 	<< ";amount:" << this->_amount
 	<< ";deposits:" << this->_nbDeposits
@@ -107,4 +116,25 @@ void		Account::displayStatus() const {
 }
 
 
-static void	_displayTimestamp( void );
+void	Account::_displayTimestamp() {
+	time_t	now;
+	tm*		time_struct;
+
+	time(&now);
+	time_struct = localtime(&now);
+	std::cout << '[' << time_struct->tm_year + 1900;
+	std::cout << std::setfill('0') << std::setw(2) << time_struct->tm_mon + 1;
+	std::cout << std::setfill('0') << std::setw(2) << time_struct->tm_mday;
+	std::cout << '_'
+			  << std::setfill('0') << std::setw(2) << time_struct->tm_hour
+			  << std::setfill('0') << std::setw(2) << time_struct->tm_min
+			  << std::setfill('0') << std::setw(2) << time_struct->tm_sec
+			  << "] ";
+}
+
+
+
+
+
+
+

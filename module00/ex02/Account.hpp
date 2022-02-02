@@ -44,7 +44,7 @@ private:
 	int				_nbDeposits;
 	int				_nbWithdrawals;
 
-	static void	_displayTimestamp( void );
+	static void	_displayTimestamp();
 };
 
 
