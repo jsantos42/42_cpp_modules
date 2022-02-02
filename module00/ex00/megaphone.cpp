@@ -1,10 +1,11 @@
 #include <iostream>
 #include <cctype>
+//#include <string>
 
 int	main(int argc, char**argv) {
     std::string	buff;
 	int			i;
-	int			j;
+	size_t		j;
 
 	if (argc == 1)
 		std::cout << "* loud and unbearable feedback noise *" << std::endl;
@@ -12,9 +13,9 @@ int	main(int argc, char**argv) {
 		i = 0;
         while (++i < argc){
 			buff = argv[i];
-			j = -1;
-			while (++j < buff.length())
-				std::cout << (char)std::toupper(buff[j]);
+			j = 0;
+			while (j < buff.length())
+				std::cout << (char)std::toupper(buff[j++]);
 		}
 		std::cout << std::endl;
     }
