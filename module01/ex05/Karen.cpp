@@ -3,10 +3,14 @@
 #include <iostream>
 
 Karen::Karen() {
-	ptrArray[0] = &Karen::debug;
-	ptrArray[1] = &Karen::info;
-	ptrArray[2] = &Karen::warning;
-	ptrArray[3] = &Karen::error;
+	this->ptrArray[0] = &Karen::debug;
+	this->ptrArray[1] = &Karen::info;
+	this->ptrArray[2] = &Karen::warning;
+	this->ptrArray[3] = &Karen::error;
+	this->levels[0] = "DEBUG";
+	this->levels[1] = "INFO";
+	this->levels[2] = "WARNING";
+	this->levels[3] = "ERROR";
 	std::cout << "Karen instance created." << std::endl;}
 
 Karen::~Karen() {
@@ -14,16 +18,10 @@ Karen::~Karen() {
 
 void	Karen::complain(const std::string& level ) {
 	int			i;
-	std::string	str[NB_LEVELS];
-
-	str[0] = "DEBUG";
-	str[1] = "INFO";
-	str[2] = "WARNING";
-	str[3] = "ERROR";
 
 	i = -1;
 	while(++i < NB_LEVELS)
-		if (str[i] == level) {
+		if (levels[i] == level) {
 			(this->*ptrArray[i])();
 			break ; }
 	if (i == NB_LEVELS)

@@ -9,14 +9,15 @@ public:
 	Karen();
 	~Karen();
 	typedef	void (Karen::*funcPtr)();
-	void	complain(const std::string& level );
-	funcPtr	ptrArray[NB_LEVELS];
+	void		complain(const std::string& level );
 
 private:
 	void	debug();
 	void	info();
 	void	warning();
 	void	error();
+	funcPtr		ptrArray[NB_LEVELS];
+	std::string	levels[NB_LEVELS];
 };
 
 #endif //EX05_KAREN_H
