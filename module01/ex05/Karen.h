@@ -10,6 +10,7 @@ public:
 	~Karen();
 	typedef	void (Karen::*funcPtr)();
 	void		complain(const std::string& level );
+	std::string	getLevel(int i) const;
 
 private:
 	void	debug();

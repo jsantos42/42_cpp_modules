@@ -28,6 +28,8 @@ void	Karen::complain(const std::string& level ) {
 		std::cout << "ERROR: Karen only has the following levels:" << std::endl
 				  << "'debug', 'info', 'warning' and 'error'.\n\n"; }
 
+std::string		Karen::getLevel(int i) const { return (this->levels[i]); };
+
 void	Karen::debug() {
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-\n"
 				 "ketchup burger. I really do!" << std::endl; }
