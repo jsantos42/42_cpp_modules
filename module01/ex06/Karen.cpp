@@ -12,30 +12,26 @@ Karen::Karen() {
 	this->levels[2] = "WARNING";
 	this->levels[3] = "ERROR"; }
 
-void	Karen::complain(const std::string& level ) {
-	int			i;
-
-	i = -1;
-	while(++i < NB_LEVELS)
-		if (levels[i] == level) {
-			(this->*ptrArray[i])();
-			break ; }
-	if (i == NB_LEVELS)
-		std::cout << "ERROR: Karen only has the following levels:" << std::endl
-				  << "'debug', 'info', 'warning' and 'error'.\n\n"; }
 
 void	Karen::filter(const std::string& level ) {
-	bool	complained;
-	int		i;
+	int i;
 
-	complained = false;
 	i = -1;
-	while(++i < NB_LEVELS)
-		if (levels[i] == level || complained) {
+	while (++i < NB_LEVELS)
+		if (levels[i] == level)
+			break;
+	switch (i) {
+		case 0:
+			(this->*ptrArray[i++])();
+		case 1:
+			(this->*ptrArray[i++])();
+		case 2:
+			(this->*ptrArray[i++])();
+		case 3:
 			(this->*ptrArray[i])();
-			complained = true; }
-	if (!complained)
-		std::cout << "[ Probably complaining about insignificant problems ]\n\n"; }
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]\n\n"; }
+	}
 
 std::string		Karen::getLevel(int i) const { return (this->levels[i]); };
 
