@@ -2,7 +2,7 @@ CC	=				c++
 CFLAGS =			-Wall -Werror -Wextra -std=c++98
 RM =				rm -rf
 
-NAME =				BraiiiiiiinnnzzzZ
+NAME =				Karen2.0
 HEADERS =			.
 
 SRCS_DIR = 			srcs
