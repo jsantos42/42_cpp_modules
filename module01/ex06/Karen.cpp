@@ -29,6 +29,7 @@ void	Karen::filter(const std::string& level ) {
 			(this->*ptrArray[i++])();
 		case 3:
 			(this->*ptrArray[i])();
+			break ;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]\n\n"; }
 	}
