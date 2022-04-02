@@ -2,7 +2,7 @@ CC	=				c++
 CFLAGS =			-Wall -Werror -Wextra -std=c++98
 RM =				rm -rf
 
-NAME =				BraiiiiiiinnnzzzZ
+NAME =				My_First_Class_in_Orthodox_Canonical_Form
 HEADERS =			.
 
 SRCS_DIR = 			srcs
