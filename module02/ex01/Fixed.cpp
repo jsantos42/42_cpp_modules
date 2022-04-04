@@ -71,7 +71,7 @@ Fixed::~Fixed() {
 // 	Operator Overloads
 //==============================================================================
 
-Fixed &Fixed::operator=(const Fixed& rh_instance) {
+Fixed&	Fixed::operator=(const Fixed& rh_instance) {
 	if (this != &rh_instance)
 		this->raw_bits = rh_instance.raw_bits;
 	std::cout << "Copy assignment operator called.\n";

@@ -21,7 +21,7 @@ Fixed::~Fixed()
 	std::cout << "Destructor called.\n";
 }
 
-Fixed &Fixed::operator=(const Fixed &rh_instance)
+Fixed&	Fixed::operator=(const Fixed &rh_instance)
 {
 	if (this != &rh_instance)
 		this->fixed_point_number = rh_instance.fixed_point_number;
