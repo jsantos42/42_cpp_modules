@@ -4,7 +4,7 @@
 // 	CONSTRUCTORS
 //==============================================================================
 ClapTrap::ClapTrap() {
-	std::cout << "Default constructor called. Missing name.\n";
+	std::cout << "Default constructor called.\n";
 }
 
 ClapTrap::ClapTrap(const std::string& name)
@@ -23,15 +23,15 @@ ClapTrap::ClapTrap(const ClapTrap &src)
 // 	DESTRUCTORS
 //==============================================================================
 
-ClapTrap::~ClapTrap()
-{}
+ClapTrap::~ClapTrap() {
+	std::cout << "Destructor called.\n";
+}
 
 //==============================================================================
 // 	OPERATOR OVERLOADS
 //==============================================================================
 
-ClapTrap& ClapTrap::operator=(const ClapTrap &rh_instance)
-{
+ClapTrap&	ClapTrap::operator=(const ClapTrap &rh_instance) {
 	if (this != &rh_instance) {
 		this->name = rh_instance.name;
 		this->hit_points = rh_instance.hit_points;
@@ -59,6 +59,48 @@ can easily see they have been called.
 Implement and turn in your own tests to ensure your code works as expected.
  */
 
-void ClapTrap::attack(const std::string &target) {
-	target.take
+void	ClapTrap::attack(const std::string &target) {
+	std::cout << "ClapTrap named "
+	<< this->name
+	<< " just attacked target named "
+	<< target
+	<< ", making it lose "
+	<< attack_damage
+	<< " points.\n";
+}
+
+void	ClapTrap::takeDamage(unsigned int amount) {
+	std::cout << "ClapTrap named "
+			  << this->name
+			  << " was just attacked, losing "
+			  << amount
+			  << " points.\n";
+}
+
+void	ClapTrap::beRepaired(unsigned int amount) {
+	std::cout << "ClapTrap named "
+			  << this->name
+		  	  << " was just repaired, gaining "
+		      << amount
+		   	  << " points.\n";
+
+}
+
+ClapTrap&	ClapTrap::setName(const std::string& new_name) {
+	this->name = new_name;
+	return (*this);
+}
+
+ClapTrap&	ClapTrap::setHitPoints(const int& value) {
+	this->hit_points = value;
+	return (*this);
+}
+
+ClapTrap&	ClapTrap::setEnergyPoints(const int& value) {
+	this->energy_points = value;
+	return (*this);
+}
+ClapTrap&	ClapTrap::setAttackDamage(const int& value) {
+	this->attack_damage = value;
+	return (*this);
 }

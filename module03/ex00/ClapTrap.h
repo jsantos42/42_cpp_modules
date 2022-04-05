@@ -11,11 +11,15 @@ public:
 	explicit ClapTrap(const std::string& name);
 	virtual ~ClapTrap();                // Default destructor
 
-	ClapTrap &operator=(const ClapTrap &rh_instance);    // Assign operator overload
+	ClapTrap& operator=(const ClapTrap &rh_instance);    // Assign operator overload
 
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
+	ClapTrap&	setName(const std::string& new_name);
+	ClapTrap&	setHitPoints(const int& value);
+	ClapTrap&	setEnergyPoints(const int& value);
+	ClapTrap&	setAttackDamage(const int& value);
 
 private:
 	std::string	name;
