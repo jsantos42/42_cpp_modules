@@ -71,6 +71,7 @@ Fixed::~Fixed() {
 // 	OPERATOR OVERLOADS
 //==============================================================================
 
+//	Copy Assignment operator
 Fixed&	Fixed::operator=(const Fixed& rh_instance) {
 	if (this != &rh_instance)
 		this->raw_bits = rh_instance.raw_bits;
@@ -78,39 +79,94 @@ Fixed&	Fixed::operator=(const Fixed& rh_instance) {
 	return (*this);
 }
 
-// Prefix increment
+
+//	Comparison operators
+bool	Fixed::operator==(const Fixed& rh_instance) const {
+	return (this->getRawBits() == rh_instance.getRawBits());
+}
+
+bool	Fixed::operator>(const Fixed& rh_instance) const {
+	return (this->getRawBits() > rh_instance.getRawBits());
+}
+
+bool	Fixed::operator<(const Fixed& rh_instance) const {
+	return (this->getRawBits() < rh_instance.getRawBits());
+}
+
+bool	Fixed::operator!=(const Fixed& rh_instance) const {
+	return !(*this == rh_instance);
+}
+
+bool	Fixed::operator>=(const Fixed& rh_instance) const {
+	return !(*this < rh_instance);
+}
+
+bool	Fixed::operator<=(const Fixed& rh_instance) const {
+	return !(*this > rh_instance);
+}
+
+
+//	Arithmetic operators
+Fixed	Fixed::operator+(const Fixed& rh_instance) const {
+	Fixed	sum(this->toFloat() + rh_instance.toFloat());
+
+	return (sum);
+}
+
+Fixed	Fixed::operator-(const Fixed& rh_instance) const {
+	Fixed	difference(this->toFloat() - rh_instance.toFloat());
+
+	return (difference);
+}
+
+Fixed	Fixed::operator*(const Fixed& rh_instance) const {
+	Fixed	product(this->toFloat() * rh_instance.toFloat());
+
+	return (product);
+}
+
+Fixed	Fixed::operator/(const Fixed& rh_instance) const {
+	Fixed	quotient(this->toFloat() / rh_instance.toFloat());
+
+	return (quotient);
+}
+
+
+//	Prefix increment and decrement
 Fixed&	Fixed::operator++() {
 	this->raw_bits++;
 	return (*this);
 }
 
-// Postfix increment
-Fixed	Fixed::operator++(int) {
-	Fixed	old;
-
-	old = *this;
-	operator++();
-	return old;
+Fixed&	Fixed::operator--() {
+	this->raw_bits++;
+	return (*this);
 }
-Fixed&	Fixed::operator--();		// Prefix decrement
-Fixed	Fixed::operator--(int);	// Postfix decrement
 
-/*
-Add public member functions to your class to overload the following operators:
-• The 6 comparison operators: >, <, >=, <=, == and !=.
-• The 4 arithmetic operators: +, -, *, and /.
-• The 4 increment/decrement (pre-increment and post-increment, pre-decrement and post-decrement) operators, that will increase or decrease the ﬁxed-point value from the smallest representable  such as 1 +  > 1.
- */
 
+//	Postfix increment and decrement (changes, but returns a pre-change copy)
+Fixed	Fixed::operator++(int) {
+	Fixed	pre_increment = *this;
+	operator++();
+	return (pre_increment);
+}
+
+Fixed	Fixed::operator--(int) {
+	Fixed	pre_decrement = *this;
+	operator--();
+	return (pre_decrement);
+}
+
+
+//	Stream extraction and insertion
 std::ostream& operator<<(std::ostream &os, const Fixed& obj) {
 	os << obj.toFloat();
 	return os;
 }
 
 
-
 //==============================================================================
-//	METHODS OF THE Fixed CLASS.
+//	METHODS OF THE FIXED CLASS.
 //==============================================================================
 
 int	Fixed::getRawBits() const {
@@ -118,9 +174,10 @@ int	Fixed::getRawBits() const {
 	return (this->raw_bits);
 }
 
-void	Fixed::setRawBits(const int raw) {
+Fixed&	Fixed::setRawBits(const int raw) {
 	std::cout << "getRawBits member function called.\n";
 	this->raw_bits = raw;
+	return (*this);
 }
 
 /*
@@ -138,3 +195,15 @@ float Fixed::toFloat() const {
 int Fixed::toInt() const {
 	return (this->raw_bits >> fractional_bits);
 }
+
+/*
+Add these four public overloaded member functions to your class:
+• A static member function min that takes as parameters two references on fixed-point
+		numbers, and returns a reference to the smallest one.
+• A static member function min that takes as parameters two references to constant
+fixed-point numbers, and returns a reference to the smallest one.
+• A static member function max that takes as parameters two references on fixed-point
+		numbers, and returns a reference to the greatest one.
+• A static member function max that takes as parameters two references to constant
+fixed-point numbers, and returns a reference to the greatest one.
+ */

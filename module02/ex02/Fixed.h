@@ -12,15 +12,23 @@ public:
 	virtual ~Fixed();
 	/* ========== OPERATOR OVERLOADS ========== */
 	Fixed&	operator=(const Fixed& rh_instance);
-//	Fixed& operator>(const Fixed)
-
+	bool	operator==(const Fixed& rh_instance) const;
+	bool	operator>(const Fixed& rh_instance) const;
+	bool	operator<(const Fixed& rh_instance) const;
+	bool	operator!=(const Fixed& rh_instance) const;
+	bool	operator>=(const Fixed& rh_instance) const;
+	bool	operator<=(const Fixed& rh_instance) const;
+	Fixed	operator+(const Fixed& rh_instance) const;
+	Fixed	operator-(const Fixed& rh_instance) const;
+	Fixed	operator*(const Fixed& rh_instance) const;
+	Fixed	operator/(const Fixed& rh_instance) const;
 	Fixed&	operator++();		// Prefix increment
 	Fixed	operator++(int);	// Postfix increment
 	Fixed&	operator--();		// Prefix decrement
 	Fixed	operator--(int);	// Postfix decrement
 
 	int					getRawBits() const;
-	void				setRawBits(const int raw);
+	Fixed&				setRawBits(const int raw);
 	float				toFloat() const;
 	int					toInt() const;
 private:
