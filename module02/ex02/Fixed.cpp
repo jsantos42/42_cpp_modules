@@ -143,6 +143,24 @@ Fixed&	Fixed::operator--() {
 	return (*this);
 }
 
+/*
+ * Why does the postfix increment operator take a dummy parameter? The following
+ * explanation comes from
+ * https://stackoverflow.com/questions/3574831/why-does-the-postfix-increment-operator-take-a-dummy-parameter
+ *
+ * Prefix and postfix ++ are different operators. With the standard Foo operator
+ * symbol(Foo &) style declaration there was no obvious way to distinguish the
+ * two. Rather than come up with some new syntax like Foo symbol operator(Foo &)
+ * which would make it into a special case unlike all the other operators and
+ * likely a bit of a pain to parse, the language designers wanted some other
+ * solution.
+ * The solution they chose was somewhat bizarre. They noted that all the other
+ * 'postfix' operators (i.e. operators that occurred after one of their
+ * operands) were actually infix operators that took two arguments. For example,
+ * plain old +, / or >. On this basis the language designers decided that having
+ * a random dummy argument would be a good way to distinguish between prefix and
+ * postfix ++.
+ */
 
 //	Postfix increment and decrement (changes, but returns a pre-change copy)
 Fixed	Fixed::operator++(int) {
@@ -174,6 +192,7 @@ int	Fixed::getRawBits() const {
 	return (this->raw_bits);
 }
 
+// This return type allows operations to be concatenated.
 Fixed&	Fixed::setRawBits(const int raw) {
 	std::cout << "getRawBits member function called.\n";
 	this->raw_bits = raw;
@@ -196,14 +215,18 @@ int Fixed::toInt() const {
 	return (this->raw_bits >> fractional_bits);
 }
 
-/*
-Add these four public overloaded member functions to your class:
-• A static member function min that takes as parameters two references on fixed-point
-		numbers, and returns a reference to the smallest one.
-• A static member function min that takes as parameters two references to constant
-fixed-point numbers, and returns a reference to the smallest one.
-• A static member function max that takes as parameters two references on fixed-point
-		numbers, and returns a reference to the greatest one.
-• A static member function max that takes as parameters two references to constant
-fixed-point numbers, and returns a reference to the greatest one.
- */
+Fixed&	Fixed::min(Fixed& first, Fixed& second) {
+	return ((first < second) ? first : second);
+}
+
+Fixed&	Fixed::max(Fixed& first, Fixed& second) {
+	return ((first > second) ? first : second);
+}
+
+const Fixed&	Fixed::min(const Fixed& first, const Fixed& second) {
+	return ((first < second) ? first : second);
+}
+
+const Fixed&	Fixed::max(const Fixed& first, const Fixed& second) {
+	return ((first > second) ? first : second);
+}

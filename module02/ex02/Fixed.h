@@ -11,17 +11,17 @@ public:
 	/* ============== DESTRUCTORS ============= */
 	virtual ~Fixed();
 	/* ========== OPERATOR OVERLOADS ========== */
-	Fixed&	operator=(const Fixed& rh_instance);
+	Fixed&	operator= (const Fixed& rh_instance);
 	bool	operator==(const Fixed& rh_instance) const;
-	bool	operator>(const Fixed& rh_instance) const;
-	bool	operator<(const Fixed& rh_instance) const;
+	bool	operator> (const Fixed& rh_instance) const;
+	bool	operator< (const Fixed& rh_instance) const;
 	bool	operator!=(const Fixed& rh_instance) const;
 	bool	operator>=(const Fixed& rh_instance) const;
 	bool	operator<=(const Fixed& rh_instance) const;
-	Fixed	operator+(const Fixed& rh_instance) const;
-	Fixed	operator-(const Fixed& rh_instance) const;
-	Fixed	operator*(const Fixed& rh_instance) const;
-	Fixed	operator/(const Fixed& rh_instance) const;
+	Fixed	operator+ (const Fixed& rh_instance) const;
+	Fixed	operator- (const Fixed& rh_instance) const;
+	Fixed	operator* (const Fixed& rh_instance) const;
+	Fixed	operator/ (const Fixed& rh_instance) const;
 	Fixed&	operator++();		// Prefix increment
 	Fixed	operator++(int);	// Postfix increment
 	Fixed&	operator--();		// Prefix decrement
@@ -31,6 +31,10 @@ public:
 	Fixed&				setRawBits(const int raw);
 	float				toFloat() const;
 	int					toInt() const;
+	static Fixed&		min(Fixed& first, Fixed& second);
+	static Fixed&		max(Fixed& first, Fixed& second);
+	static const Fixed&	min(const Fixed& first, const Fixed& second);
+	static const Fixed&	max(const Fixed& first, const Fixed& second);
 private:
 	int					raw_bits;
 	static const int	fractional_bits = 8;
