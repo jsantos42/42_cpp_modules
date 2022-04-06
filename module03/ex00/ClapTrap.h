@@ -6,16 +6,16 @@
 
 class ClapTrap {
 public:
-	ClapTrap();                        // Default constructor
-	ClapTrap(const ClapTrap &src);    // Copy constructor
+	ClapTrap();                       			// Default constructor
+	ClapTrap(const ClapTrap &src);    			// Copy constructor
 	explicit ClapTrap(const std::string& name);
-	virtual ~ClapTrap();                // Default destructor
+	virtual ~ClapTrap();                		// Default destructor
 
 	ClapTrap& operator=(const ClapTrap &rh_instance);    // Assign operator overload
 
-	void	attack(const std::string& target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
+	void		attack(const std::string& target);
+	void		takeDamage(unsigned int amount);
+	void		beRepaired(unsigned int amount);
 	ClapTrap&	setName(const std::string& new_name);
 	ClapTrap&	setHitPoints(const int& value);
 	ClapTrap&	setEnergyPoints(const int& value);
@@ -27,6 +27,5 @@ private:
 	int			energy_points;
 	int			attack_damage;
 };
-
 
 #endif //EX01_CLAPTRAP_H
