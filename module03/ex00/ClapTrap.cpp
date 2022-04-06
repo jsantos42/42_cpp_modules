@@ -83,7 +83,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		  	  << " was just repaired, gaining "
 		      << amount
 		   	  << " points.\n";
-
 }
 
 ClapTrap&	ClapTrap::setName(const std::string& new_name) {
