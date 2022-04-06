@@ -7,8 +7,13 @@ ScavTrap::ScavTrap() {
 	std::cout << "[SCAVTRAP] Default constructor called.\n";
 }
 
-ScavTrap::ScavTrap(const ScavTrap &src) {
+/*
+ *	The copy constructor of the child should be explicitly initialized in the
+ *	copy constructor.
+ */
+ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src) {
 	*this = src;
+	std::cout << "[SCAVTRAP] Copy constructor called.\n";
 }
 
 ScavTrap::ScavTrap(const std::string& _name) {

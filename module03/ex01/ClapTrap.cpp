@@ -9,6 +9,7 @@ ClapTrap::ClapTrap() {
 
 ClapTrap::ClapTrap(const ClapTrap &src) {
 	*this = src;
+	std::cout << "[CLAPTRAP] Copy constructor called.\n";
 }
 
 ClapTrap::ClapTrap(const std::string& name)
