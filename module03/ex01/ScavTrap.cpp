@@ -21,7 +21,9 @@ ScavTrap::ScavTrap(const std::string& _name) {
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
-	std::cout << "[SCAVTRAP] String constructor called with name " << name << ".\n";
+	std::cout << "[SCAVTRAP] String constructor called with name "
+			  << name
+			  << ".\n";
 }
 
 //==============================================================================
