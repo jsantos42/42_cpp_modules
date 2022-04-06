@@ -4,9 +4,14 @@
 #include <string>
 #include <iostream>
 
+/*
+ * Note that the default constructor is set as private, so that it cannot be
+ * used. Another way, available in C++11) would be:
+ * 		ClapTrap() = delete;
+ */
+
 class ClapTrap {
 public:
-	ClapTrap();                       			// Default constructor
 	ClapTrap(const ClapTrap &src);    			// Copy constructor
 	explicit ClapTrap(const std::string& name);
 	virtual ~ClapTrap();                		// Default destructor
@@ -22,6 +27,8 @@ public:
 	ClapTrap&	setAttackDamage(const int& value);
 
 private:
+	ClapTrap();                       			// Default constructor
+
 	std::string	name;
 	int			hit_points;
 	int			energy_points;
