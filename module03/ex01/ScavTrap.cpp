@@ -8,8 +8,10 @@ ScavTrap::ScavTrap() {
 }
 
 /*
- *	The copy constructor of the child should be explicitly initialized in the
- *	copy constructor.
+ *	The base class 'ClapTrap' should be explicitly initialized in the copy
+ *	constructor of the derived class, (i.e. since the default copy constructor
+ *	of the base class was replaced by a custom one, it has to be specified in
+ *	the copy constructor of the derived ones).
  */
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src) {
 	*this = src;
