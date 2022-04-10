@@ -8,10 +8,11 @@ DiamondTrap::DiamondTrap() {
 }
 
 /*
- *	The base class 'ClapTrap' should be explicitly initialized in the copy
- *	constructor of the derived class, (i.e. since the default copy constructor
- *	of the base class was replaced by a custom one, it has to be specified in
- *	the copy constructor of the derived ones).
+ *	Here, in the copy constructor of the derived class, the base classes
+ *	ClapTrap, ScavTrap and FragTrap should be explicitly initialized [with its
+ *	copy constructor], since new constructors were written (rule of three) (and
+ *	also because the default copy constructor of the base class was replaced by
+ *	a custom one?)
  */
 DiamondTrap::DiamondTrap(const DiamondTrap &src) : ClapTrap(src), ScavTrap(src), FragTrap(src) {
 	*this = src;
