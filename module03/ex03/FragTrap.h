@@ -3,16 +3,21 @@
 
 #include "ClapTrap.h"
 
-class FragTrap : public ClapTrap {
+/*
+ * Note that this inheritance must be virtual to avoid the diamond trap.
+ */
+class FragTrap : virtual public ClapTrap {
 public:
-	FragTrap();							// Default constructor
-	FragTrap(const FragTrap &src);		// Copy constructor
 	explicit FragTrap(const std::string& name);
+	FragTrap(const FragTrap &src);		// Copy constructor
 	virtual ~FragTrap();                // Default destructor
 
 	FragTrap&	operator=(const FragTrap &rh_instance);    // Assign operator overload
 
 	void		highFivesGuys();
+
+protected:
+	FragTrap();							// Default constructor
 };
 
 #endif //EX02_FRAGTRAP_H

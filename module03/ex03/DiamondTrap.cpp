@@ -13,16 +13,29 @@ DiamondTrap::DiamondTrap() {
  *	of the base class was replaced by a custom one, it has to be specified in
  *	the copy constructor of the derived ones).
  */
-DiamondTrap::DiamondTrap(const DiamondTrap &src) : ClapTrap(src) {
+DiamondTrap::DiamondTrap(const DiamondTrap &src) : ClapTrap(src), ScavTrap(src), FragTrap(src) {
 	*this = src;
 	std::cout << "[DIAMONDTRAP] Copy constructor called.\n";
 }
 
-DiamondTrap::DiamondTrap(const std::string& _name) {
+/*
+ * Note that both ScavTrap and FragTrap need to have virtual inheritance from
+ * ClapTrap in order to avoid the diamond trap (check their .h). Otherwise, the
+ * compiler would throw the following errors:
+ * 1) Ambiguous conversion from derived class DiamondTrap to base class ClapTrap
+ * 2) Non-static member found in multiple base-class subobjects of type ClapTrap
+ *
+ * Also note that, on this derived class, we have to specify which constructor
+ * from the parent we want it to use, otherwise it will use the default one,
+ * which does not initialize the attributes, thus giving a random number when
+ * calling the method DiamondTrap::attack().
+ */
+DiamondTrap::DiamondTrap(const std::string& _name) : ClapTrap(_name), ScavTrap(_name), FragTrap(_name) {
+	ClapTrap::name = _name + "_clap_name";			// (1)
 	name = _name;
-	hit_points = 100;
-	energy_points = 100;
-	attack_damage = 30;
+	hit_points = FragTrap::getHitPoints();			// (2)
+	energy_points = ScavTrap::getEnergyPoints();	// (2)
+	attack_damage = FragTrap::getAttackDamage();	// (2)
 	std::cout << "[DIAMONDTRAP] String constructor called with name "
 			  << name
 			  << ".\n";
@@ -56,14 +69,15 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &rh_instance) {
 // 	METHODS OF THE DiamondTrap CLASS.
 //==============================================================================
 
-void	DiamondTrap::highFivesGuys() {
-	std::cout << "DiamondTrap named "
-			  << name
-			  << " just high-fived his guys.\n";
+void	DiamondTrap::attack(const std::string &target) {
+	ScavTrap::attack(target);
 }
 
 void	DiamondTrap::whoAmI() {
-	std::cout << "DiamondTrap named "
+	std::cout << "Hello, I'm DiamondTrap named "
 			<< name
-			<< " says hi.\n";
+			<< " and my ClapTrap parent is named "
+			<< ClapTrap::name
+			<< ".\n";
 }
+

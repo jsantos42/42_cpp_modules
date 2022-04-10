@@ -3,15 +3,20 @@
 
 #include "ClapTrap.h"
 
-class ScavTrap : public ClapTrap {
+/*
+ * Note that this inheritance must be virtual to avoid the diamond trap.
+ */
+class ScavTrap : virtual public ClapTrap {
 public:
-	ScavTrap();                       			// Default constructor
-	ScavTrap(const ScavTrap &src);    			// Copy constructor
 	explicit ScavTrap(const std::string& name);
+	ScavTrap(const ScavTrap &src);    			// Copy constructor
 	~ScavTrap();                				// Default destructor
 
 	ScavTrap&	operator=(const ScavTrap& rh_instance);    // Assign operator overload
 	void		guardGate();
+
+protected:
+	ScavTrap();                       			// Default constructor
 };
 
 #endif //EX01_SCAVTRAP_H

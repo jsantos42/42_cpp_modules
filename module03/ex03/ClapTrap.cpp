@@ -12,11 +12,15 @@ ClapTrap::ClapTrap(const ClapTrap &src) {
 	std::cout << "[CLAPTRAP] Copy constructor called.\n";
 }
 
-ClapTrap::ClapTrap(const std::string& name)
-		: name(name),
-		  hit_points(10),
-		  energy_points(10),
-		  attack_damage(0) {
+/*
+ * Here we cannot name the parameter name (we need the underscore) if we decide
+ * to compile with the flag -Wshadow.
+ */
+ClapTrap::ClapTrap(const std::string& _name) :
+	name(_name),
+	hit_points(10),
+	energy_points(10),
+	attack_damage(0) {
 	std::cout << "[CLAPTRAP] String constructor called with name " << name << ".\n";
 }
 
@@ -38,10 +42,10 @@ ClapTrap::~ClapTrap() {
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap &rh_instance) {
 	if (this != &rh_instance) {
-		this->name = rh_instance.name;
-		this->hit_points = rh_instance.hit_points;
-		this->energy_points = rh_instance.energy_points;
-		this->attack_damage = rh_instance.attack_damage;
+		this->name = rh_instance.getName();
+		this->hit_points = rh_instance.getHitPoints();
+		this->energy_points = rh_instance.getEnergyPoints();
+		this->attack_damage = rh_instance.getAttackDamage();
 	}
 	return (*this);
 }
@@ -96,18 +100,18 @@ ClapTrap&	ClapTrap::setAttackDamage(const int& value) {
 	return (*this);
 }
 
-std::string	ClapTrap::getName() {
+std::string	ClapTrap::getName() const {
 	return (this->name);
 }
 
-int			ClapTrap::getHitPoints() {
+int			ClapTrap::getHitPoints() const {
 	return (this->hit_points);
 }
 
-int			ClapTrap::getEnergyPoints() {
+int			ClapTrap::getEnergyPoints() const {
 	return (this->energy_points);
 }
 
-int			ClapTrap::getAttackDamage() {
+int			ClapTrap::getAttackDamage() const {
 	return (this->attack_damage);
 }

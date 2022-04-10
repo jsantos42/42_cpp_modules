@@ -4,15 +4,21 @@
 #include "ScavTrap.h"
 #include "FragTrap.h"
 
-class DiamondTrap : public ScavTrap, FragTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
 public:
-	DiamondTrap();							// Default constructor
-	DiamondTrap(const DiamondTrap &src);    // Copy constructor
 	explicit DiamondTrap(const std::string& name);
+	DiamondTrap(const DiamondTrap &src);    // Copy constructor
 	virtual ~DiamondTrap();                 // Default destructor
 
 	DiamondTrap &operator=(const DiamondTrap &rh_instance);    // Assign operator overload
+	void		attack(const std::string &target);
 	void		whoAmI();
+
+protected:
+	DiamondTrap();							// Default constructor
+
+private:
+	std::string	name;
 };
 
 
