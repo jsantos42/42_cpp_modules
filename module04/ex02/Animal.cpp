@@ -36,7 +36,3 @@ Animal &Animal::operator=(const Animal &rh_instance) {
 std::string Animal::getType() const {
 	return (this->type);
 }
-
-void	Animal::makeSound() const {
-	std::cout << "Undefined animal type produces no sound!\n";
-}

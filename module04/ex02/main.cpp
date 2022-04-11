@@ -5,6 +5,13 @@
 #define NB	6
 
 int	main() {
+
+	// The following is not possible, because Variable type 'Animal' is an
+	// abstract class, which has an unimplemented pure virtual method makeSound
+//	Animal a;
+
+	// From here on, this is the main from the previous exercise.
+
 	/*
 	 * Note that the size of the parent class Animal is != from the size of the
 	 * derived classes Dog and Cat, so be careful not to allocate as parent and
