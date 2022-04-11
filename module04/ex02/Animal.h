@@ -9,7 +9,7 @@
  *	virtual method (there's no implementation in the .cpp file, only in the
  *	derived classes). As such, this class becomes abstract and cannot be
  *	instantiated. If this Abstract Class only had pure virtual methods, it would
- *	be called an interface.
+ *	be called a Pure Abstract Class (also commonly called Interface).
  */
 class Animal {
 public:
