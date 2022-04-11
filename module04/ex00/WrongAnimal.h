@@ -23,5 +23,4 @@ protected:
 	std::string	type;
 };
 
-
 #endif //EX00_WRONGANIMAL_H

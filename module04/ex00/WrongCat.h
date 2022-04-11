@@ -13,5 +13,4 @@ public:
 	void	makeSound() const;
 };
 
-
 #endif //EX00_WRONGCAT_H
