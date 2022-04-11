@@ -35,3 +35,6 @@ Brain &Brain::operator=(const Brain &rh_instance) {
 //==============================================================================
 // 	METHODS OF THE Brain CLASS.
 //==============================================================================
+std::string Brain::getIdea(int i) {
+	return (ideas[i]);
+}

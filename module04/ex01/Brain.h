@@ -10,7 +10,8 @@ public:
 	Brain(const Brain &src);
 	virtual ~Brain();
 
-	Brain &operator=(const Brain &rh_instance);
+	Brain&		operator=(const Brain &rh_instance);
+	std::string	getIdea(int i);
 
 private:
 	std::string	ideas[100];

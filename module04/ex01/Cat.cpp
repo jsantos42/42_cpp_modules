@@ -10,12 +10,14 @@
  *	See https://stackoverflow.com/questions/18479295/member-initializer-does-not-name-a-non-static-data-member-or-base-class
  */
 Cat::Cat() {
+	std::cout << "[Cat] Default constructor.\n";
 	type = "Cat";
 	brain = new Brain();
-	std::cout << "[Cat] Default constructor.\n";
 }
 
 Cat::Cat(const Cat &src) : Animal(src) {
+	this->brain = new Brain();
+	*(this->brain) = *(src.brain);
 	*this = src;
 	std::cout << "[Cat] Copy constructor.\n";
 }
@@ -33,9 +35,11 @@ Cat::~Cat() {
 // 	OPERATOR OVERLOADS
 //==============================================================================
 
-Cat &Cat::operator=(const Cat &rh_instance) {
-	if (this != &rh_instance)
-		this->type = rh_instance.type;
+Cat&	Cat::operator=(const Cat &rh_instance) {
+	if (this != &rh_instance) {
+		this->type = rh_instance.getType();
+		*(this->brain) = *(rh_instance.getBrain());
+	}
 	return (*this);
 }
 
@@ -44,4 +48,8 @@ Cat &Cat::operator=(const Cat &rh_instance) {
 //==============================================================================
 void Cat::makeSound() const {
 	std::cout << "MEOW!\n";
+}
+
+Brain*	Cat::getBrain() const {
+	return (brain);
 }
