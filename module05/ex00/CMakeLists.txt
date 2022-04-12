@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD 98)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
 file(GLOB SRC *.cpp)
 
-add_executable(${ProjectDir} ${SRC} Bureaucrat.cpp Bureaucrat.h Bureaucrat.cpp Bureaucrat.h)
+add_executable(${ProjectDir} ${SRC})
