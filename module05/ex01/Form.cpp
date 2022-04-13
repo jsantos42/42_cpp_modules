@@ -46,6 +46,17 @@ Form &Form::operator=(const Form &rh_instance) {
 	return (*this);
 }
 
+std::ostream&	operator<<(std::ostream& os, const Form& obj) {
+	os << obj.getName()
+	   << (obj.getSignedStatus() ? " IS" : " is NOT")
+	   << " signed and needs grade "
+	   << obj.getGradeToSign()
+	   << " to sign and grade "
+	   << obj.getGradeToExecute()
+	   << " to execute.\n";
+	return (os);
+}
+
 //==============================================================================
 // 	METHODS OF THE Form CLASS.
 //==============================================================================
@@ -67,10 +78,12 @@ int Form::getGradeToExecute() const {
 
 Form &Form::setName(const std::string& _name) {
 	this->name = _name;
+	return (*this);
 }
 
 Form &Form::setSignedStatus(bool status) {
 	this->signed_status = status;
+	return (*this);
 }
 
 const char *Form::GradeTooHighException::what() const throw() {
@@ -79,4 +92,17 @@ const char *Form::GradeTooHighException::what() const throw() {
 
 const char *Form::GradeTooLowException::what() const throw() {
 	return ("[FORM] Grade is too low!");
+}
+
+Form&	Form::beSigned(const Bureaucrat &target) {
+	try {
+		if (target.getGrade() <= this->grade_to_sign)
+			this->signed_status = true;
+		else
+			throw GradeTooLowException();
+	}
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	return (*this);
 }

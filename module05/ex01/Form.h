@@ -3,6 +3,9 @@
 
 #include <string>
 #include <iostream>
+#include "Bureaucrat.h"
+
+class Bureaucrat;
 
 class Form {
 public:
@@ -17,6 +20,7 @@ public:
 	int				getGradeToExecute() const;
 	Form&			setName(const std::string& _name);
 	Form&			setSignedStatus(bool status);
+	Form&			beSigned(const Bureaucrat& target);
 //	Form&			setGradeToSign(int);
 //	Form&			setGradeToExecute(int);
 
@@ -33,9 +37,10 @@ private:
 	Form();
 	std::string	name;
 	bool		signed_status;
-	const int	grade_to_sign;
-	const int	grade_to_execute;
+	int	grade_to_sign;
+	int	grade_to_execute;
 };
 
+std::ostream&	operator<<(std::ostream& os, const Form& obj);
 
 #endif //EX01_FORM_H
