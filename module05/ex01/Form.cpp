@@ -3,7 +3,7 @@
 //==============================================================================
 // 	CONSTRUCTORS
 //==============================================================================
-Form::Form() : grade_to_sign(-1), grade_to_execute(-1) {
+Form::Form() : name("UNNAMED"), signed_status(false), grade_to_sign(-2), grade_to_execute(-1) {
 	std::cout << "[Form] Default constructor.\n";
 }
 
@@ -37,12 +37,8 @@ Form::~Form() {
 //==============================================================================
 
 Form &Form::operator=(const Form &rh_instance) {
-	if (this != &rh_instance) {
-		name = rh_instance.name;
-		signed_status = rh_instance.signed_status;
-		grade_to_sign = rh_instance.grade_to_sign;
-		grade_to_execute = rh_instance.grade_to_execute;
-	}
+	if (this != &rh_instance)
+		*this = rh_instance;
 	return (*this);
 }
 
@@ -60,7 +56,7 @@ std::ostream&	operator<<(std::ostream& os, const Form& obj) {
 //==============================================================================
 // 	METHODS OF THE Form CLASS.
 //==============================================================================
-std::string Form::getName() const {
+const std::string	Form::getName() const {
 	return (this->name);
 }
 
@@ -68,17 +64,12 @@ bool Form::getSignedStatus() const {
 	return (this->signed_status);
 }
 
-int Form::getGradeToSign() const {
+int	Form::getGradeToSign() const {
 	return (this->grade_to_sign);
 }
 
 int Form::getGradeToExecute() const {
 	return (this->grade_to_execute);
-}
-
-Form &Form::setName(const std::string& _name) {
-	this->name = _name;
-	return (*this);
 }
 
 Form &Form::setSignedStatus(bool status) {
