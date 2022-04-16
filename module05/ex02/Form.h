@@ -16,11 +16,11 @@ public:
 	Form&				operator=(const Form &rh_instance);
 	const std::string	getName() const;
 	bool				getSignedStatus() const;
-	int			getGradeToSign() const;
-	int			getGradeToExecute() const;
+	int					getGradeToSign() const;
+	int					getGradeToExecute() const;
 	Form&				setSignedStatus(bool status);
 	Form&				beSigned(const Bureaucrat& target);
-	virtual Form&		execute(const Bureaucrat& executor) = 0;
+	virtual void		execute(const Bureaucrat& executor) const = 0;
 
 	class GradeTooHighException : public std::exception {
 	public:

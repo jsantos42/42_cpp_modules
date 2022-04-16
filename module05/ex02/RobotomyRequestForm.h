@@ -5,12 +5,17 @@
 
 class RobotomyRequestForm : public Form {
 public:
-	RobotomyRequestForm();
+	explicit RobotomyRequestForm(const std::string& _target);
 	RobotomyRequestForm(const RobotomyRequestForm &src);
 	virtual ~RobotomyRequestForm();
 
 	RobotomyRequestForm&	operator=(const RobotomyRequestForm &rh_instance);
-	virtual Form&			execute(const Bureaucrat& executor);
+	virtual void			execute(const Bureaucrat& executor) const;
+	std::string				getTarget() const;
+
+private:
+	RobotomyRequestForm();
+	std::string	target;
 };
 
 #endif //EX02_ROBOTOMYREQUESTFORM_H

@@ -4,11 +4,19 @@
 // 	CONSTRUCTORS
 //==============================================================================
 RobotomyRequestForm::RobotomyRequestForm() :
-	Form("RobotomyRequestForm", 72, 45) {
+	Form("RobotomyRequestForm", 72, 45),
+	target("UNNAMED") {
 	std::cout << "[RobotomyRequestForm] Default constructor.\n";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src) {
+RobotomyRequestForm::RobotomyRequestForm(const std::string &_target) :
+	Form("RobotomyRequestForm", 72, 45),
+	target(_target) {
+	std::cout << "[RobotomyRequestForm] String constructor.\n";
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src) :
+	Form(src) {
 	*this = src;
 	std::cout << "[RobotomyRequestForm] Copy constructor.\n";
 }
@@ -34,10 +42,12 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 //==============================================================================
 // 	METHODS OF THE RobotomyRequestForm CLASS.
 //==============================================================================
-Form&	RobotomyRequestForm::execute(const Bureaucrat &executor) {
+std::string RobotomyRequestForm::getTarget() const {
+	return (this->target);
+}
+
+void	RobotomyRequestForm::execute(const Bureaucrat &executor) const {
 	try {
-		if (!this->getSignedStatus() && executor.getGrade() <= this->getGradeToSign())
-			this->beSigned(executor);
 		if (this->getSignedStatus() && executor.getGrade() <= this->getGradeToExecute())
 			;// execute
 		else
@@ -46,5 +56,4 @@ Form&	RobotomyRequestForm::execute(const Bureaucrat &executor) {
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
-	return (*this);
 }

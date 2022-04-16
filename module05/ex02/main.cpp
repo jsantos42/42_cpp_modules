@@ -1,19 +1,21 @@
 #include <iostream>
 #include "Bureaucrat.h"
-#include "Form.h"
+#include "PresidentialPardonForm.h"
+#include "RobotomyRequestForm.h"
+#include "ShrubberyCreationForm.h"
 
 int main() {
 	Bureaucrat	smith("Mr Smith", 4);
 	Bureaucrat	neo("NEO", 1);
-	Form		f1("f1", 3, 2);
+	ShrubberyCreationForm		s("s");
 
 	std::cout << smith << std::endl;
-	std::cout << f1;
-	f1.beSigned(smith);
-	smith.signForm(f1);
-	std::cout << f1;
-	f1.beSigned(neo);
-	std::cout << f1;
+	std::cout << s;
+	s.beSigned(smith);
+	smith.signForm(s);
+	std::cout << s;
+	s.beSigned(neo);
+	std::cout << s;
 
 	return (0);
 }

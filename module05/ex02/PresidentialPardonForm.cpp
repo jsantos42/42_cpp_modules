@@ -4,8 +4,15 @@
 // 	CONSTRUCTORS
 //==============================================================================
 PresidentialPardonForm::PresidentialPardonForm() :
-	Form("PresidentialPardonForm", 25, 5) {
+	Form("PresidentialPardonForm", 25, 5),
+	target("UNNAMED") {
 	std::cout << "[PresidentialPardonForm] Default constructor.\n";
+}
+
+PresidentialPardonForm::PresidentialPardonForm(const std::string &_target) :
+	Form("PresidentialPardonForm", 25, 5),
+	target(_target) {
+	std::cout << "[PresidentialPardonForm] String constructor.\n";
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src) :
@@ -35,10 +42,12 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 //==============================================================================
 // 	METHODS OF THE PresidentialPardonForm CLASS.
 //==============================================================================
-Form&	PresidentialPardonForm::execute(const Bureaucrat &executor) {
+std::string	PresidentialPardonForm::getTarget() const {
+	return (this->target);
+}
+
+void	PresidentialPardonForm::execute(const Bureaucrat &executor) const {
 	try {
-		if (!this->getSignedStatus() && executor.getGrade() <= this->getGradeToSign())
-			this->beSigned(executor);
 		if (this->getSignedStatus() && executor.getGrade() <= this->getGradeToExecute())
 			;// execute
 		else
@@ -47,5 +56,4 @@ Form&	PresidentialPardonForm::execute(const Bureaucrat &executor) {
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
-	return (*this);
 }

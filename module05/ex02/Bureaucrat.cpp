@@ -159,3 +159,25 @@ Bureaucrat &Bureaucrat::signForm(Form &_form) {
 	}
 	return (*this);
 }
+
+/*
+ * Note that execute() must be const, because here we are calling it from a
+ * const Form object.
+ */
+void	Bureaucrat::executeForm(const Form& form) const {
+	try {
+		form.execute(*this);
+		std::cout << this->getName()
+				  << " just executed "
+				  << form.getName()
+				  << std::endl;
+	}
+	catch (std::exception& e) {
+		std::cout << this->getName()
+				  << " could not execute "
+				  << form.getName()
+				  << ", due to the following exception: "
+				  << e.what()
+				  << std::endl;
+	}
+}

@@ -5,12 +5,17 @@
 
 class PresidentialPardonForm : public Form {
 public:
-	PresidentialPardonForm();
+	explicit PresidentialPardonForm(const std::string& _target);
 	PresidentialPardonForm(const PresidentialPardonForm &src);
 	virtual ~PresidentialPardonForm();
 
 	PresidentialPardonForm&	operator=(const PresidentialPardonForm &rh_instance);
-	virtual Form&			execute(const Bureaucrat& executor);
+	virtual void			execute(const Bureaucrat& executor) const;
+	std::string				getTarget() const;
+
+private:
+	PresidentialPardonForm();
+	std::string	target;
 };
 
 #endif //EX02_PRESIDENTIALPARDONFORM_H
