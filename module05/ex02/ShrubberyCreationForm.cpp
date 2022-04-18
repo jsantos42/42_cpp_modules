@@ -1,3 +1,4 @@
+#include <fstream>
 #include "ShrubberyCreationForm.h"
 
 //==============================================================================
@@ -46,10 +47,33 @@ std::string ShrubberyCreationForm::getTarget() const {
 	return (this->target);
 }
 
+/*
+ * Note that error messages should print to std::cerr and not std::cout.
+ */
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 	try {
-		if (this->getSignedStatus() && executor.getGrade() <= this->getGradeToExecute())
-			;// execute
+		if (this->getSignedStatus() && executor.getGrade() <= this->getGradeToExecute()) {
+			std::ofstream	ofs;
+
+			ofs.open((this->getTarget() + "_shrubbery").c_str(), std::ofstream::out);
+			if (!ofs.is_open())
+				std::cerr << "Could not open file.\n";
+			else {
+				ofs << "         v .   ._, |_  .,\n"
+					   "    `-._\\/  .  \\ /    |/_\n"
+					   "    \\  _\\, y | \\//\n"
+					   "         _\\_.___\\, \\/ -.\\||\n"
+					   "            `7-,--.`._||  / / ,\n"
+					   "            /'     `-. `./ / |/_.'\n"
+					   "                     |    |//\n"
+					   "                     |_    /\n"
+					   "                     |-   |\n"
+					   "                     |   =|\n"
+					   "                     |    |\n"
+					   "--------------------/ ,  . \\--------._\n";
+				ofs.close();
+			}
+		}
 		else
 			throw GradeTooLowException();
 	}

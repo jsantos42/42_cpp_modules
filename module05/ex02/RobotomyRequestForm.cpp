@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include "RobotomyRequestForm.h"
 
 //==============================================================================
@@ -48,8 +49,13 @@ std::string RobotomyRequestForm::getTarget() const {
 
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) const {
 	try {
-		if (this->getSignedStatus() && executor.getGrade() <= this->getGradeToExecute())
-			;// execute
+		if (this->getSignedStatus() && executor.getGrade() <= this->getGradeToExecute()) {
+			srand(static_cast<unsigned int>(time(NULL)));
+			std::cout << "BRRRRRR  BRRRRRR BRRRRRR BRRRRRRRRRRRRRR!\n"
+					  << this->getTarget()
+					  << ((rand() % 2) ? " has been" : " FAILED being")
+					  << " robotomized.\n";
+		}
 		else
 			throw GradeTooLowException();
 	}
