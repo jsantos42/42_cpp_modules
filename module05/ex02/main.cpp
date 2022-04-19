@@ -7,22 +7,28 @@
 int main() {
 	Bureaucrat	smith("Mr Smith", 4);
 	Bureaucrat	neo("NEO", 1);
-	ShrubberyCreationForm		s("s");
-	RobotomyRequestForm			r("r");
-	PresidentialPardonForm		p("p");
+	ShrubberyCreationForm		s1("s1");
+	RobotomyRequestForm			r1("r1");
+	PresidentialPardonForm		p1("p1");
+	ShrubberyCreationForm		s2 = s1;
+	RobotomyRequestForm			r2 = r1;
+	PresidentialPardonForm		p2 = p1;
 
+	std::cout << "=========================\n";
 	std::cout << smith << std::endl;
-	std::cout << s;
-	s.beSigned(smith);
-	smith.signForm(s);
-	std::cout << s;
-	s.beSigned(neo);
-	s.execute(smith);
-	r.beSigned(neo);
-	p.beSigned(neo);
-	r.execute(neo);
-	p.execute(neo);
-	std::cout << s;
+	std::cout << s1 << std::endl;
+	std::cout << "=========================\n";
+	s1.beSigned(smith);
+	smith.signForm(s1);
+	std::cout << s1 << std::endl;
+	std::cout << "=========================\n";
+	s1.beSigned(neo);
+	s1.execute(smith);
+	r1.beSigned(neo);
+	p1.beSigned(neo);
+	r1.execute(neo);
+	p1.execute(neo);
+	std::cout << s1 << std::endl;
 
 	return (0);
 }

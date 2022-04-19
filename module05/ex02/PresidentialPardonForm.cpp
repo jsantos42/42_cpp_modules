@@ -34,8 +34,10 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 //==============================================================================
 
 PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPardonForm &rh_instance) {
-	if (this != &rh_instance)
-		*this = rh_instance;
+	if (this != &rh_instance) {
+		this->setSignedStatus(rh_instance.getSignedStatus());
+		this->target = rh_instance.getTarget();
+	}
 	return (*this);
 }
 

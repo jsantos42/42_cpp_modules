@@ -35,8 +35,10 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 //==============================================================================
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm &rh_instance) {
-	if (this != &rh_instance)
-		*this = rh_instance;
+	if (this != &rh_instance) {
+		this->setSignedStatus(rh_instance.getSignedStatus());
+		this->target = rh_instance.getTarget();
+	}
 	return (*this);
 }
 

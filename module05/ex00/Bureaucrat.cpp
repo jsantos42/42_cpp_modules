@@ -103,7 +103,7 @@ std::ostream&	operator<<(std::ostream& out, const Bureaucrat& rh_instance) {
 	out << rh_instance.getName()
 		<< ", bureaucrat grade "
 		<< rh_instance.getGrade()
-		<< ".\n";
+		<< ".";
 	return out;
 }
 

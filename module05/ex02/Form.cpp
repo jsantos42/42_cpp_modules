@@ -38,7 +38,7 @@ Form::~Form() {
 
 Form &Form::operator=(const Form &rh_instance) {
 	if (this != &rh_instance)
-		*this = rh_instance;
+		this->signed_status = rh_instance.signed_status;
 	return (*this);
 }
 
@@ -49,7 +49,7 @@ std::ostream&	operator<<(std::ostream& os, const Form& obj) {
 	   << obj.getGradeToSign()
 	   << " to sign and grade "
 	   << obj.getGradeToExecute()
-	   << " to execute.\n";
+	   << " to execute.";
 	return (os);
 }
 
