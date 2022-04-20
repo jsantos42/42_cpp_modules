@@ -21,5 +21,33 @@ int	main() {
 	delete me;
 	delete src;
 
+	std::cout << "========================================\n";
+	std::cout << "TESTING THE DEEP COPY\n";
+	std::cout << "========================================\n";
+	Ice* ice = new Ice();
+	Character* person1 = new Character("person1");
+	person1->equip(ice);
+	std::cout << "Item #0 from person1 is: " << (person1->getItem(0) ? person1->getItem(0)->getType() : "EMPTY") << std::endl;
+	std::cout << "----------------------------------------\n";
+	Character* person2 = new Character(*person1);
+	std::cout << "Item #0 from person2 is: " << (person2->getItem(0) ? person2->getItem(0)->getType() : "EMPTY") << std::endl;
+	std::cout << "----------------------------------------\n";
+	Character person3(*person1);
+	std::cout << "Item #0 from person3 is: " << (person3.getItem(0) ? person3.getItem(0)->getType() : "EMPTY") << std::endl;
+	std::cout << "----------------------------------------\n";
+	person1->unequip(0);
+	std::cout << "Item #0 from person1 is: " << (person1->getItem(0) ? person1->getItem(0)->getType() : "EMPTY") << std::endl;
+	std::cout << "Item #0 from person2 is: " << (person2->getItem(0) ? person2->getItem(0)->getType() : "EMPTY") << std::endl;
+	std::cout << "Item #0 from person3 is: " << (person3.getItem(0) ? person3.getItem(0)->getType() : "EMPTY") << std::endl;
+	std::cout << "----------------------------------------\n";
+	delete person1;
+	std::cout << "Item #0 from person2 is: " << (person2->getItem(0) ? person2->getItem(0)->getType() : "EMPTY") << std::endl;
+	std::cout << "Item #0 from person3 is: " << (person3.getItem(0) ? person3.getItem(0)->getType() : "EMPTY") << std::endl;
+	std::cout << "----------------------------------------\n";
+	delete person2;
+	std::cout << "Item #0 from person3 is: " << (person3.getItem(0) ? person3.getItem(0)->getType() : "EMPTY") << std::endl;
+	std::cout << "----------------------------------------\n";
+	delete ice; //this is necessary because I called unequip()
+
 	return (0);
 }

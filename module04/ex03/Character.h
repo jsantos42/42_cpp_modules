@@ -14,6 +14,7 @@ public:
 	virtual void				equip(AMateria* m);
 	virtual void				unequip(int idx);
 	virtual void				use(int idx, ICharacter& target);
+	AMateria*					getItem(int index);
 
 protected:
 	Character();

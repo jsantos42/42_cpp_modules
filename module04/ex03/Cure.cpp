@@ -35,9 +35,7 @@ Cure &Cure::operator=(const Cure &rh_instance) {
 // 	METHODS OF THE Cure CLASS.
 //==============================================================================
 AMateria*	Cure::clone() const {
-	AMateria*	new_amateria = new Cure;
-	new_amateria->setType(this->getType());
-	return (new_amateria);
+	return (new Cure());
 }
 
 void Cure::use(ICharacter &target) {

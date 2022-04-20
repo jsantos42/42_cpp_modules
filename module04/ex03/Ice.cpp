@@ -35,9 +35,7 @@ Ice &Ice::operator=(const Ice &rh_instance) {
 // 	METHODS OF THE Ice CLASS.
 //==============================================================================
 AMateria*	Ice::clone() const {
-	AMateria*	new_amateria = new Ice;
-	new_amateria->setType(this->getType());
-	return (new_amateria);
+	return (new Ice());
 }
 
 void Ice::use(ICharacter &target) {
