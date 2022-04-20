@@ -14,6 +14,7 @@ public:
 
 	ScavTrap&	operator=(const ScavTrap& rh_instance);    // Assign operator overload
 	void		guardGate();
+	void		attack(const std::string& target);
 
 protected:
 	ScavTrap();                       			// Default constructor

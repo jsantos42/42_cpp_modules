@@ -56,8 +56,18 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &rh_instance) {
 // 	METHODS OF THE ScavTrap CLASS.
 //==============================================================================
 
-void ScavTrap::guardGate() {
+void	ScavTrap::guardGate() {
 	std::cout << "ScavTrap named "
 			  << name
 			  << " is now in Gate keeper mode.\n";
+}
+
+void	ScavTrap::attack(const std::string &target) {
+	std::cout << "ScavTrap named "
+			  << this->name
+			  << " just attacked target named "
+			  << target
+			  << ", making it lose "
+			  << attack_damage
+			  << " points.\n";
 }
