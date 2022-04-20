@@ -13,6 +13,7 @@ public:
 	Dog&			operator=(const Dog &rh_instance);
 	virtual void	makeSound() const; // in C++11 an override should be here
 	Brain*			getBrain() const;
+	Dog&			setIdea(int index, const std::string& idea);
 
 private:
 	Brain*	brain;

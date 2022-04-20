@@ -35,6 +35,11 @@ Brain &Brain::operator=(const Brain &rh_instance) {
 //==============================================================================
 // 	METHODS OF THE Brain CLASS.
 //==============================================================================
-std::string Brain::getIdea(int i) {
-	return (ideas[i]);
+std::string	Brain::getIdea(int index) const {
+	return (ideas[index]);
+}
+
+Brain&	Brain::setIdea(int index, const std::string &new_idea) {
+	this->ideas[index] = new_idea;
+	return (*this);
 }

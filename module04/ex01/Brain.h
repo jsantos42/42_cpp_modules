@@ -11,7 +11,8 @@ public:
 	virtual ~Brain();
 
 	Brain&		operator=(const Brain &rh_instance);
-	std::string	getIdea(int i);
+	std::string	getIdea(int index) const;
+	Brain&		setIdea(int index, const std::string& new_idea);
 
 private:
 	std::string	ideas[100];

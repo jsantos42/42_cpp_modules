@@ -20,7 +20,6 @@ Dog::Dog() {
  */
 Dog::Dog(const Dog &src) : Animal(src) {
 	this->brain = new Brain();
-	*(this->brain) = *(src.brain);
 	*this = src;
 	std::cout << "[Dog] Copy constructor.\n";
 }
@@ -55,4 +54,9 @@ void Dog::makeSound() const {
 
 Brain*	Dog::getBrain() const {
 	return (brain);
+}
+
+Dog&	Dog::setIdea(int index, const std::string &idea) {
+	this->brain->setIdea(index, idea);
+	return (*this);
 }
