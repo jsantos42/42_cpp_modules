@@ -16,17 +16,17 @@ public:
 
 	ClapTrap& operator=(const ClapTrap &rh_instance);    // Assign operator overload
 
-	void		attack(const std::string& target);
-	void		takeDamage(unsigned int amount);
-	void		beRepaired(unsigned int amount);
-	ClapTrap&	setName(const std::string& new_name);
-	ClapTrap&	setHitPoints(const int& value);
-	ClapTrap&	setEnergyPoints(const int& value);
-	ClapTrap&	setAttackDamage(const int& value);
-	std::string	getName();
-	int			getHitPoints();
-	int			getEnergyPoints();
-	int			getAttackDamage();
+	virtual void	attack(const std::string& target);
+	void			takeDamage(unsigned int amount);
+	void			beRepaired(unsigned int amount);
+	ClapTrap&		setName(const std::string& new_name);
+	ClapTrap&		setHitPoints(const int& value);
+	ClapTrap&		setEnergyPoints(const int& value);
+	ClapTrap&		setAttackDamage(const int& value);
+	std::string		getName();
+	int				getHitPoints();
+	int				getEnergyPoints();
+	int				getAttackDamage();
 
 protected:
 	ClapTrap();                       			// Default constructor
