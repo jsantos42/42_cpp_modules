@@ -139,7 +139,7 @@ Fixed&	Fixed::operator++() {
 }
 
 Fixed&	Fixed::operator--() {
-	this->raw_bits++;
+	this->raw_bits--;
 	return (*this);
 }
 
