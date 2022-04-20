@@ -15,9 +15,11 @@ Cat::Cat() {
 	brain = new Brain();
 }
 
+/*
+ * This is now a deep copy.
+ */
 Cat::Cat(const Cat &src) : Animal(src) {
 	this->brain = new Brain();
-	*(this->brain) = *(src.brain);
 	*this = src;
 	std::cout << "[Cat] Copy constructor.\n";
 }
