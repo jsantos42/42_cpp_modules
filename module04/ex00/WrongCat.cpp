@@ -4,7 +4,7 @@
 // 	CONSTRUCTORS
 //==============================================================================
 WrongCat::WrongCat() {
-	type = "Cat";
+	type = "WrongCat";
 	std::cout << "[WrongCat] Default constructor.\n";
 }
 
