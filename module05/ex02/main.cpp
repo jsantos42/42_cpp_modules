@@ -22,6 +22,8 @@ int main() {
 	smith.signForm(s1);
 	std::cout << s1 << std::endl;
 	std::cout << "=========================\n";
+	smith.executeForm(s1);
+	std::cout << "=========================\n";
 	s1.beSigned(neo);
 	s1.execute(smith);
 	r1.beSigned(neo);
