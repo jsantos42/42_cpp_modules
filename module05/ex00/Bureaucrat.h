@@ -17,7 +17,6 @@ public:
 	Bureaucrat	operator--(int);
 	std::string	getName() const;
 	int			getGrade() const;
-	Bureaucrat&	setName(const std::string& _name);
 	Bureaucrat&	setGrade(int _grade);
 
 
@@ -32,8 +31,8 @@ public:
 
 private:
 	Bureaucrat();
-	std::string	name;
-	int			grade;
+	const std::string	name;
+	int					grade;
 };
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& rh_instance);
