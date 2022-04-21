@@ -41,9 +41,8 @@ Bureaucrat::~Bureaucrat() {
 //==============================================================================
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat &rh_instance) {
-	if (this != &rh_instance) {
+	if (this != &rh_instance)
 		this->grade = rh_instance.getGrade();
-	}
 	return (*this);
 }
 

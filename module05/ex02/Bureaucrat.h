@@ -20,7 +20,6 @@ public:
 	Bureaucrat	operator--(int);
 	std::string	getName() const;
 	int			getGrade() const;
-	Bureaucrat&	setName(const std::string& _name);
 	Bureaucrat&	setGrade(int _grade);
 	Bureaucrat& signForm(Form& _form);
 	void		executeForm(const Form& form) const;
@@ -37,8 +36,8 @@ public:
 
 private:
 	Bureaucrat();
-	std::string	name;
-	int			grade;
+	const std::string	name;
+	int					grade;
 };
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& rh_instance);

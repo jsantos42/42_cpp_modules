@@ -22,10 +22,12 @@ Bureaucrat::Bureaucrat(const std::string& _name, int _grade) : name(_name)  {
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src) {
+Bureaucrat::Bureaucrat(const Bureaucrat &src) :
+	name(src.getName()) {
 	*this = src;
 	std::cout << "[Bureaucrat] Copy constructor.\n";
 }
+
 
 //==============================================================================
 // 	DESTRUCTORS
@@ -40,10 +42,8 @@ Bureaucrat::~Bureaucrat() {
 //==============================================================================
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat &rh_instance) {
-	if (this != &rh_instance) {
-		this->name = rh_instance.getName();
+	if (this != &rh_instance)
 		this->grade = rh_instance.getGrade();
-	}
 	return (*this);
 }
 
@@ -117,11 +117,6 @@ std::string	Bureaucrat::getName() const {
 
 int Bureaucrat::getGrade() const {
 	return (this->grade);
-}
-
-Bureaucrat&	Bureaucrat::setName(const std::string &_name) {
-	this->name = _name;
-	return (*this);
 }
 
 Bureaucrat &Bureaucrat::setGrade(int _grade) {
