@@ -13,6 +13,15 @@ Form::Form(const std::string &_name, const int to_sign, const int to_exec) :
 	grade_to_sign(to_sign),
 	grade_to_execute(to_exec) {
 	std::cout << "[Form] Proper constructor.\n";
+	try {
+		if (to_sign < 1 || to_exec < 1)
+			throw GradeTooHighException();
+		else if (to_sign > 150 || to_exec > 150)
+			throw GradeTooLowException();
+	}
+	catch (std::exception& a) {
+		std::cout << a.what() << std::endl;
+	}
 }
 
 Form::Form(const Form &src) :

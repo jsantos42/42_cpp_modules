@@ -16,8 +16,8 @@ public:
 	Form&				operator=(const Form &rh_instance);
 	const std::string	getName() const;
 	bool				getSignedStatus() const;
-	int			getGradeToSign() const;
-	int			getGradeToExecute() const;
+	int					getGradeToSign() const;
+	int					getGradeToExecute() const;
 	Form&				setSignedStatus(bool status);
 	Form&				beSigned(const Bureaucrat& target);
 
