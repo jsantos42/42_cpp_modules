@@ -51,8 +51,16 @@ std::ostream& operator<<(std::ostream& os, const Conversions& obj) {
 //==============================================================================
 // 	METHODS OF THE Conversions CLASS.
 //==============================================================================
+
+int Conversions::getType(const std::string &str) {
+	if (isChar(str))
+		return (CHAR);
+
+}
+
 void Conversions::storeConversions(const std::string &str) {
 	try {
+		isc
 		strtol
 	}
 

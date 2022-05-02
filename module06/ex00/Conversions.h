@@ -4,6 +4,13 @@
 #include <iostream>
 #include <string>
 
+enum e_type {
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE
+};
+
 class Conversions {
 public:
 	explicit Conversions(const std::string& str);
@@ -12,6 +19,7 @@ public:
 
 	Conversions&	operator=(const Conversions &rh_instance);
 	void			storeConversions(const std::string& str);
+	int				getType(const std::string& str);
 	char			getChar() const;
 	int				getInt() const;
 	float			getFloat() const;
@@ -19,6 +27,7 @@ public:
 
 private:
 	Conversions();
+	int		type;
 	char	c;
 	int		i;
 	float	f;
