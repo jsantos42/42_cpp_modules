@@ -4,13 +4,17 @@
 //==============================================================================
 // 	CONSTRUCTORS
 //==============================================================================
-Conversions::Conversions() {
+Conversions::Conversions() : type(NAN) {
 	std::cout << "[Conversions] Default constructor.\n";
 }
 
 Conversions::Conversions(const std::string& str) {
 	std::cout << "[Conversions] String constructor.\n";
-	storeConversions(str);
+	storeType(str);
+	printChar();
+	printInt();
+	printFloat();
+	printDouble();
 }
 
 Conversions::Conversions(const Conversions &src) {
@@ -32,52 +36,39 @@ Conversions::~Conversions() {
 
 Conversions &Conversions::operator=(const Conversions &rh_instance) {
 	if (this != &rh_instance) {
-		this->c = rh_instance.getChar();
-		this->i = rh_instance.getInt();
-		this->f = rh_instance.getFloat();
-		this->d = rh_instance.getDouble();
+		this->type = rh_instance.getType();
+		this->string = rh_instance.getString();
 	}
 	return (*this);
-}
-
-std::ostream& operator<<(std::ostream& os, const Conversions& obj) {
-	os << "char: " << obj.getChar() << std::endl
-	   << "int: " << obj.getInt() << std::endl
-	   << "float: " << obj.getFloat() << std::endl
-	   << "double: " << obj.getDouble() << std::endl;
-	return (os);
 }
 
 //==============================================================================
 // 	METHODS OF THE Conversions CLASS.
 //==============================================================================
 
-int Conversions::getType(const std::string &str) {
+void	Conversions::storeType(const std::string& str) {
 	if (isChar(str))
-		return (CHAR);
-
+		type = CHAR;
+	else if (isInt(str))
+		type = INT;
+	else if (isFloat(str))
+		type = FLOAT;
+	else if (isDouble(str))
+		type = DOUBLE;
 }
 
-void Conversions::storeConversions(const std::string &str) {
-	try {
-		isc
-		strtol
-	}
-
+int Conversions::getType() const {
+	return (type);
 }
 
-char Conversions::getChar() const {
-	return (c);
+std::string Conversions::getString() const {
+	return (string);
 }
 
-int Conversions::getInt() const {
-	return (i);
+bool Conversions::isChar(const std::string &str) {
+	return (str.length() == 1 && std::isprint(str[0]));
 }
 
-float Conversions::getFloat() const {
-	return (f);
-}
-
-double Conversions::getDouble() const {
-	return (d);
+bool Conversions::isInt(const std::string &str) {
+	return
 }

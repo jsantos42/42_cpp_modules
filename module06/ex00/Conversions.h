@@ -5,6 +5,7 @@
 #include <string>
 
 enum e_type {
+	NAN,
 	CHAR,
 	INT,
 	FLOAT,
@@ -18,22 +19,22 @@ public:
 	virtual ~Conversions();
 
 	Conversions&	operator=(const Conversions &rh_instance);
-	void			storeConversions(const std::string& str);
-	int				getType(const std::string& str);
-	char			getChar() const;
-	int				getInt() const;
-	float			getFloat() const;
-	double			getDouble() const;
+	void			storeType(const std::string& str);
+	int				getType() const;
+	std::string 	getString() const;
+	bool			isChar(const std::string& str);
+	bool			isInt(const std::string& str);
+	bool			isFloat(const std::string& str);
+	bool			isDouble(const std::string& str);
+	void			printChar() const;
+	void			printInt() const;
+	void			printFloat() const;
+	void			printDouble() const;
 
 private:
 	Conversions();
-	int		type;
-	char	c;
-	int		i;
-	float	f;
-	double	d;
+	int			type;
+	std::string	string;
 };
-
-std::ostream&	operator<<(std::ostream os, const Conversions& obj);
 
 #endif //EX00_CONVERSIONS_H
