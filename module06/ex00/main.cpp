@@ -6,6 +6,5 @@ int main(int argc, char** argv) {
 		return (1);
 	}
 	Conversions arg(argv[1]);
-	std::cout << arg;
 	return (0);
 }

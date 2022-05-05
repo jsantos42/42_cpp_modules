@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include "Conversions.h"
 
 //==============================================================================
@@ -69,6 +70,25 @@ bool Conversions::isChar(const std::string &str) {
 	return (str.length() == 1 && std::isprint(str[0]));
 }
 
+/*
+ *	Using an istringstream (input stream that operates on strings)
+ *	eof() makes sure the string has ended.
+ *	fail() informs if an error occurred during the output operation
+ */
 bool Conversions::isInt(const std::string &str) {
-	return
+	std::istringstream	stream(str);
+	int					i;
+
+	stream >> i;
+	return (stream.eof() && !stream.fail());
+
+	while (std::cin.fail()){
+		std::cin.clear();
+		std::cin.ignore();
+		if (str == "SEARCH")
+			return (-1);
+		std::cout << std::endl << "Wrong input, please provide a valid number: ";
+		std::cin >> input;
+	}
+
 }
