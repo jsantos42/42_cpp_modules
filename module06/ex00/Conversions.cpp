@@ -5,7 +5,7 @@
 //==============================================================================
 // 	CONSTRUCTORS
 //==============================================================================
-Conversions::Conversions() : type(NAN) {
+Conversions::Conversions() : type(NONE) {
 	std::cout << "[Conversions] Default constructor.\n";
 }
 
@@ -51,10 +51,10 @@ Conversions &Conversions::operator=(const Conversions &rh_instance) {
 void	Conversions::storeType(const std::string& str) {
 	if (isSpecial(str))
 		type = SPECIAL;
-	else if (isChar(str))
-		type = CHAR;
 	else if (isInt(str))
 		type = INT;
+	else if (isChar(str))
+		type = CHAR;
 	else if (isFloat(str))
 		type = FLOAT;
 	else if (isDouble(str))
@@ -99,7 +99,7 @@ std::string Conversions::getString() const {
 bool Conversions::isSpecial(const std::string &str) {
 	std::string special_cases[] = {"-inf", "+inf", "nan"};
 
-	for (unsigned long i = 0; i < special_cases->length(); i++)
+	for (unsigned long i = 0; i < special_cases->length() - 1; i++)
 		if (str == special_cases[i] || str == (special_cases[i] + "f"))
 			return (true);
 	return (false);
@@ -120,15 +120,6 @@ bool Conversions::isInt(const std::string &str) {
 
 	stream >> i;
 	return (stream.eof() && !stream.fail());
-
-//	while (std::cin.fail()){
-//		std::cin.clear();
-//		std::cin.ignore();
-//		if (str == "SEARCH")
-//			return (-1);
-//		std::cout << std::endl << "Wrong input, please provide a valid number: ";
-//		std::cin >> input;
-//	}
 }
 
 bool Conversions::isFloat(const std::string &str) {
@@ -160,7 +151,7 @@ bool Conversions::isDouble(const std::string &str) {
 
 void Conversions::printChar() const {
 	std::cout << "char: ";
-	if (getType() == NAN || getType() == SPECIAL)
+	if (getType() == NONE || getType() == SPECIAL)
 		std::cout << "impossible\n";
 	else if (std::isprint(static_cast<int>(getNumber())))
 		std::cout << '\'' << static_cast<char>(getNumber()) << '\'' << std::endl;
@@ -170,16 +161,28 @@ void Conversions::printChar() const {
 
 void Conversions::printInt() const {
 	std::cout << "int: ";
-	if (getType() == NAN || getType() == SPECIAL)
+	if (getType() == NONE || getType() == SPECIAL)
 		std::cout << "impossible\n";
 	else
 		std::cout << static_cast<int>(getNumber()) << std::endl;
 }
 
 void Conversions::printFloat() const {
-
+	std::cout << "float: ";
+	if (getType() == NONE)
+		std::cout << "impossible\n";
+	else if (getType() == SPECIAL)
+		std::cout << getString() << "f\n";
+	else
+		std::cout << std::fixed << static_cast<float>(getNumber()) << "f\n";
 }
 
 void Conversions::printDouble() const {
-
+	std::cout << "double: ";
+	if (getType() == NONE)
+		std::cout << "impossible\n";
+	else if (getType() == SPECIAL)
+		std::cout << getString() << std::endl;
+	else
+		std::cout << std::fixed << static_cast<double>(getNumber()) << std::endl;
 }

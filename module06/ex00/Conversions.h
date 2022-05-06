@@ -3,9 +3,10 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 enum e_type {
-	NAN,
+	NONE,
 	SPECIAL,
 	CHAR,
 	INT,
