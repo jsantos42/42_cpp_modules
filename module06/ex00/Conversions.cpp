@@ -97,9 +97,9 @@ std::string Conversions::getString() const {
 //==============================================================================
 
 bool Conversions::isSpecial(const std::string &str) {
-	std::string special_cases[] = {"-inf", "+inf", "nan"};
+	std::string special_cases[] = {"-inf", "+inf", "inf", "nan"};
 
-	for (unsigned long i = 0; i < special_cases->length() - 1; i++)
+	for (unsigned long i = 0; i < 4; i++)
 		if (str == special_cases[i] || str == (special_cases[i] + "f"))
 			return (true);
 	return (false);
