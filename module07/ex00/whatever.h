@@ -24,7 +24,7 @@ std::ostream & operator<<(std::ostream & o, const Awesome &a) {
 }
 
 /* Notice that here tmp must be initialized when declared, otherwise it might
- * throw an error if A is a class with a private default constructor. */
+ throw an error if typename A is a class with a private default constructor. */
 template<typename A>
 void	swap(A& a1, A& a2) {
 	A	tmp = a1;
