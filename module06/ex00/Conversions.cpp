@@ -70,8 +70,13 @@ void Conversions::storeStringNumber(const std::string &str) {
 		if (str == "-inff" || str == "+inff" || str == "nanf")
 			string = str.substr(0, str.length() - 1);
 	}
-	else if (getType() == INT || getType() == FLOAT || getType() == DOUBLE)
+	else if (getType() == INT || getType() == DOUBLE)
 		stream >> number;
+	else if (getType() == FLOAT) {
+		std::string str2 = str.substr(0, str.length() - 1);
+		std::istringstream	stream2(str2);
+		stream2 >> number;
+	}
 	else if (getType() == CHAR) {
 		stream >> c;
 		number = c;
