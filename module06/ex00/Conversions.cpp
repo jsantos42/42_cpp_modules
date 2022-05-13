@@ -168,6 +168,8 @@ void Conversions::printInt() const {
 	std::cout << "int: ";
 	if (getType() == NONE || getType() == SPECIAL)
 		std::cout << "impossible\n";
+	else if (getNumber() > 2147483647 || getNumber() < -2147483648)
+		std::cout << "impossible\n";
 	else
 		std::cout << static_cast<int>(getNumber()) << std::endl;
 }
