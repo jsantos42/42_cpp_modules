@@ -41,7 +41,7 @@ Array<T>::Array(unsigned int n) : array(new T[n]), len(n) {
 }
 
 /* Note that here we need to initialize array and len, just in case the new
- * Array that is being constructor was non-existent. If it already existed and
+ * Array that is being constructed was non-existent. If it already existed and
  * is going to store a new Array src, then array and len already exist and are
  * not reinitialized. */
 template<typename T>
