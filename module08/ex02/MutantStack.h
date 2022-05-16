@@ -9,12 +9,12 @@ class MutantStack : public std::stack<T> {
 public:
 	typedef typename std::stack<T>::container_type::iterator 	iterator;
 	MutantStack<T>();
-	MutantStack<T>(const MutantStack &src);
+	MutantStack<T>(const MutantStack<T> &src);
 	virtual ~MutantStack<T>();
 
-	MutantStack&	operator=(const MutantStack &rh_instance);
-	iterator	a();
-	iterator	end();
+	MutantStack<T>&	operator=(const MutantStack<T> &rh_instance);
+	iterator	b();
+	iterator	e();
 
 
 };
@@ -28,7 +28,7 @@ MutantStack<T>::MutantStack() {
 }
 
 template<typename T>
-MutantStack<T>::MutantStack(const MutantStack &src) {
+MutantStack<T>::MutantStack(const MutantStack<T> &src) {
 	*this = src;
 	std::cout << "[MutantStack] Copy constructor.\n";
 }
@@ -47,21 +47,26 @@ MutantStack<T>::~MutantStack() {
 //==============================================================================
 
 template<typename T>
-MutantStack<T>&	MutantStack<T>::operator=(const MutantStack &rh_instance) {
-	if (this != &rh_instance) {
-		this->v = rh_instance.v;
-		this->max_size = rh_instance.max_size;
-	}
+MutantStack<T>&	MutantStack<T>::operator=(const MutantStack<T> &rh_instance) {
+	if (this != &rh_instance)
+		this->c = rh_instance.c;
 	return (*this);
 }
 
 //==============================================================================
 // ITERATORS
 //==============================================================================
+/*
+ * Note that c is the container_type.
+ */
 template<typename T>
-typename MutantStack<T>::iterator 	MutantStack<T>::end() {
-	
-};
+typename MutantStack<T>::iterator	MutantStack<T>::b() {
+	return (this->c.begin());
+}
 
+template<typename T>
+typename MutantStack<T>::iterator 	MutantStack<T>::e() {
+	return (this->c.end());
+};
 
 #endif //EX01_SPAN_H
